@@ -22,5 +22,5 @@ cleanup:
 	docker rm my-app
 
 unittest:
-	docker build -f test/http_app/Dockerfile -t my-app:test . && \
+	docker build -f http_app/Dockerfile -t my-app:test . && \
 	docker run --rm my-app:test pytest tests/
