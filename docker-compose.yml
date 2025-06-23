@@ -1,0 +1,32 @@
+services:
+  app:
+    image: leticiavalladares/test:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - ENV=staging
+    profiles:
+      - staging
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    ports:
+      - "9100:9100"
+    command:
+      - '--path.rootfs=/host'
+    volumes:
+      - '/:/host:ro,rslave'
+
+  prometheus:
+    image: prom/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'     
+    volumes:
+      - ./http_app/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"

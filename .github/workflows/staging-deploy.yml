@@ -24,30 +24,19 @@ jobs:
           context: .
           push: true
           tags: leticiavalladares/test:latest
-          file: docker/Dockerfile
+          file: http_app/Dockerfile
 
-      - name: Run container for testing
-        run: |
-          docker run -d -p 8080:8080 --name my-app leticiavalladares/test:latest
-          sleep 5
-
-      - name: Test app health
-        run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/health)
-          if [ "$STATUS" -eq 200 ]; then
-            echo "OK"
-          else
-            echo "Failed with status $STATUS"
-            exit 1
-          fi
+      - name: Test container
+        run: make test
 
       - name: Cleanup test container
         if: always()
-        run: |
-          docker stop my-app
-          docker rm my-app          
-
+        run: make cleanup
+ 
       - name: Deploy to staging with Docker Compose
-        run: |
-          docker compose --profile staging pull
-          docker compose --profile staging up -d
+        run: make up
+
+      - name: Clean up staging environment
+        if: always()
+        run: make down
+      

@@ -22,7 +22,7 @@ La aplicación estará disponible en `http://localhost:5000/health`.
 
 ### 2. Ejecutar con Docker
 
-Construir la imagen:
+Construir la imagen Docker:
 
 ```bash
 docker build -t http_app .
@@ -31,7 +31,7 @@ docker build -t http_app .
 Ejecutar el contenedor:
 
 ```bash
-docker run -p 5000:5000 http_app
+docker run -p 8080:8080 http_app
 ```
 
 ### 3. Usar docker-compose
@@ -42,7 +42,7 @@ Levantar los servicios (aplicación + node-exporter):
 docker-compose up
 ```
 
-Esto expondrá la aplicación en `http://localhost:5000/health` y las métricas de node-exporter en el puerto 9100.
+Esto expondrá la aplicación en `http://localhost:8080/health` y las métricas de node-exporter en el puerto 9100.
 
 ## Pruebas
 

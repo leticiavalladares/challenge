@@ -11,7 +11,7 @@ Preguntas:
 2. Crea un Dockerfile que sirva una aplicación HTTP sencilla en /health devolviendo "OK".
 Debe estar contenido dentro de docker-compose.yml junto a cadvisor o node-exporter.
 
-    Solución en directorio [http_app/](http_app/)
+    Solución en directorio [http_app/](http_app/) con [docker-compose.yml](docker-compose.yml)
 
 &nbsp;
 
@@ -30,7 +30,7 @@ Debe estar contenido dentro de docker-compose.yml junto a cadvisor o node-export
         targetPort: 8080
     ````
 
-    Este manifiesto crea un servicio (objeto de Kubernetes) llamado `my-service`, que está vinculado a los pods con la etiqueta `app=my-app`. Esos pods pueden ser accedidos a través del puerto 80, y gracias a este servicio el tráfico se enruta al puerto 8080, donde se ejecuta la aplicación. La idea de un "Service" en Kubernetes es exponer un punto de acceso para que los clientes puedan conectarse a determinados pods.
+    Este manifiesto crea un servicio (objeto de Kubernetes) llamado `my-service`, que está vinculado a los pods con la etiqueta (label)`app=my-app`. Esos pods pueden ser accedidos a través del puerto 80, y gracias a este servicio el tráfico se enruta al puerto 8080, donde se ejecuta la aplicación. La idea de un "Service" en Kubernetes es exponer un punto de acceso para que los clientes puedan conectarse a determinados pods.
 
 &nbsp;
 
@@ -40,7 +40,7 @@ Debe estar contenido dentro de docker-compose.yml junto a cadvisor o node-export
 - Haga push (simulado o real) a un registry local
 - Despliegue en staging (usando docker-compose)
 
-    Solución en [.github/workloads/staging-deploy.yml](.github/workloads/staging-deploy.yml)
+    Solución en [.github/workflows/staging-deploy.yml](.github/workflows/staging-deploy.yml)
 
 &nbsp;
 
@@ -95,8 +95,8 @@ Debe estar contenido dentro de docker-compose.yml junto a cadvisor o node-export
 &nbsp;
   - Añadir tests unitarios simples (si usa Python o Node).
   
-    Test en [http_app/test_health.py](http_app/test_health.py)
+    Test en [tests/test_health.py](tests/test_health.py)
 &nbsp;
   - Simular métricas de sistema con Prometheus + Grafana.
   
-    Pasos a seguir en []()
+    Prometheus installado en la aplicación [http_app/app.py](http_app/app.py) con integración de `node-exporter` y Grafana en el [docker-compose.yml](docker-compose.yml).
