@@ -69,9 +69,9 @@ Debe estar contenido dentro de docker-compose.yml junto a cadvisor o node-export
 
     Los siguientes recursos que elegí ofrecen alta escalabilidad y alta disponibilidad, son serverless y tienen una opción de pago por uso, lo que evita la necesidad de reservar instancias de cualquier tipo y de pagar planes por adelantado. La mayoría de estos recursos tienen planes gratuitos, que en algunos casos son suficientes para desplegar cargas de trabajo pequeñas.
 
-    Dado que no se especifica que la aplicación web deba contener contenido dinámico, usaría un AWS S3 Bucket para alojarla. Para procesar la lógica de negocio, emplearía una función AWS Lambda, ya que permite utilizar cualquier lenguaje de programación que sea compatible a través de SDK. Y para el almacenamiento de datos, usaría DynamoDB, una opción NoSQL.
+    Dado que no se especifica que la aplicación web deba contener contenido dinámico, usaría un AWS S3 Bucket para alojar el contenido estático (CSS, imágenes, etc.). Para procesar la lógica de la aplicación, emplearía una función AWS Lambda, ya que permite utilizar cualquier lenguaje de programación que sea compatible a través de SDK. Y para el almacenamiento de datos, usaría DynamoDB, una opción NoSQL.
 
-    Además de estos tres recursos fundamentales, utilizaría una CDN como AWS CloudFront para que la aplicación web esté disponible en distintos países, y también AWS API Gateway para mantener, asegurar y controlar las llamadas a la API de la aplicación web.
+    Además de estos tres recursos fundamentales, utilizaría una CDN como AWS CloudFront para que la aplicación web esté disponible en distintos países con baja latencia, y también AWS API Gateway para mantener, asegurar y controlar las llamadas a la API de la aplicación web.
 
     ![Image](https://github.com/user-attachments/assets/b52cedc5-df4e-41a2-8f6a-8c28b77dd9a6)
 
@@ -84,9 +84,9 @@ Debe estar contenido dentro de docker-compose.yml junto a cadvisor o node-export
     - Translate into Spanish the following text: ""
     - Create a real-scenario alert for a business-critical API considering SLI and SLO
     - Simulate metrics of a business-critical API by using Prometheus and Grafana
-    - Create a Makefike with make up, make down and make test tasks
+    - Create a Makefile with make up, make down and make test tasks
+    - Generate a README.md (Context: http_app) [README.md](http_app/README.md)
     - Create unit test in python for the following function: ""
-
 
 9. Bonus técnico (opcional):
   - Añadir un Makefile con tareas make up, make down, make test.
@@ -96,8 +96,7 @@ Debe estar contenido dentro de docker-compose.yml junto a cadvisor o node-export
 
   - Añadir tests unitarios simples (si usa Python o Node).
   
-    Test en [tests/test_health.py](tests/test_health.py)
-    
+    Test en [tests/test_health.py](tests/test_health.py)    
 &nbsp;
   - Simular métricas de sistema con Prometheus + Grafana.
   
